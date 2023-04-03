@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
+import static Utilities.TestBase.bekle;
+
 
 public class C03_Alerts extends TestBase {
     /*
@@ -43,10 +45,9 @@ public class C03_Alerts extends TestBase {
         driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
         //    2. butona tıklayın, uyarıdaki Cancel butonuna tıklayın ve result mesajının
         driver.findElement(By.cssSelector("button[onclick='jsConfirm()']")).click();
-        Thread.sleep(4000);
+        bekle(4);
         driver.switchTo().alert().dismiss();
         //    “successfuly” icermedigini test edin.
-        Thread.sleep(4000);
         String actualText = driver.findElement(By.xpath("//*[@id='result']")).getText();
         String expectedText = "successfuly";
         Assert.assertFalse(actualText.contains(expectedText));
@@ -59,6 +60,7 @@ public class C03_Alerts extends TestBase {
         //3. butona tıklayın, uyarıdaki metin kutusuna isminizi yazin, OK butonuna tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
         driver.findElement(By.cssSelector("[onclick='jsPrompt()']")).click(); Thread.sleep(1500);
         driver.switchTo().alert().sendKeys("SAİD"+Keys.ENTER);
+        bekle(3);
         driver.switchTo().alert().accept();
         driver.findElement(By.id("result")).equals("SAİD");
     }
