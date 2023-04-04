@@ -1,4 +1,4 @@
-package Day10_Alert_Iframe;
+package ODEV_Selenium;
 
 import Utilities.TestBase;
 import org.junit.Assert;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class Odev extends TestBase {
+public class Test04 extends TestBase {
     
     //● Bir class olusturun: IframeOdev
     //1)https://the-internet.herokuapp.com/iframe sitesine gidiniz
