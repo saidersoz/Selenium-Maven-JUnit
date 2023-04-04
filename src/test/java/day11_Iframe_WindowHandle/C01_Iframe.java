@@ -33,9 +33,12 @@ public class C01_Iframe extends TestBase {
         textBox.sendKeys("Bu textbox iFrame içinde yer almaktadır"); bekle(2);
         System.out.println("Sildiğiniz yazı yerine Bu textbox iFrame içinde yer almaktadır yazınız. (TEST PASSED)");
         //Sayfadaki "Elemental Selenium" yazısının görünür olduğunu doğrulayınız.
+        //driver.switchTo().parentFrame();
+        //driver.switchTo().defaultContent();
+        //driver.navigate().refresh(); --> bu methoda sayfayı yenilediğimiz için ilk menüye tekrar geçmiş oluruz
         driver.switchTo().parentFrame();
         WebElement textBox2 = driver.findElement(By.xpath("//*[text()='Elemental Selenium']"));
-        Assert.assertEquals(textBox2.getText(),"Elemental Selenium");
+        Assert.assertTrue(textBox2.isDisplayed());
         System.out.println("Elemental Selenium (TEST PASSED)");
     }
 }
