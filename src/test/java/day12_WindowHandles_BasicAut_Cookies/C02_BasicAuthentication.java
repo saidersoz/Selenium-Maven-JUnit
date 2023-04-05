@@ -1,7 +1,10 @@
 package day12_WindowHandles_BasicAut_Cookies;
 
 import Utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class C02_BasicAuthentication extends TestBase {
 
@@ -20,5 +23,7 @@ public class C02_BasicAuthentication extends TestBase {
     @Test
     public void basicAuthentication() {
         driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
+        WebElement paragraph = driver.findElement(By.xpath("//p"));
+        Assert.assertTrue(paragraph.getText().contains("Congratulations"));
     }
 }
