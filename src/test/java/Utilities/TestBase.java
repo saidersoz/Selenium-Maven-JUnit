@@ -88,13 +88,13 @@ public abstract class TestBase {
         select.selectByValue(secenek);
     }
 
-    //switchToWindow
+    //switchToWindow 1
     public static void switchToWindow(int sayi){
         List<String> tumWindowHandles = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tumWindowHandles.get(sayi));
     }
 
-    //switchToWindow
+    //switchToWindow 2
     public static void window(int sayi){
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
