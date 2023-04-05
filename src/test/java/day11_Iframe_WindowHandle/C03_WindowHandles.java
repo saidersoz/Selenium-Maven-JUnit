@@ -59,7 +59,6 @@ public class C03_WindowHandles extends TestBase {
         //Açılan pencereye geçin.
         driver.switchTo().window(olusturulanPencereler.get(1));
         bekle(2);
-        System.out.println(driver.getTitle());
         System.out.println("Yeni pencereye geçildi (TEST PASSED)");
 
 
