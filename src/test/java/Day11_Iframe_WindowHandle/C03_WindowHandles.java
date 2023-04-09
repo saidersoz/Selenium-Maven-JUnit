@@ -1,15 +1,11 @@
-package day11_Iframe_WindowHandle;
+package Day11_Iframe_WindowHandle;
 
 import Utilities.TestBase;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 
-import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package day12_WindowHandles_BasicAut_Cookies;
+package Day12_WindowHandles_BasicAut_Cookies;
 
 import Utilities.TestBase;
 import org.junit.Assert;
