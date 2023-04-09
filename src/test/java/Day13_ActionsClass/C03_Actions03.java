@@ -43,11 +43,13 @@ public class C03_Actions03 extends TestBase {
 
         //Sayfanın alt tarafına gidin
         Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.END).perform();
+        actions.sendKeys(Keys.END);
         bekle(2);
 
         //Sayfanın üst tarafına gidin
         actions.sendKeys(Keys.PAGE_UP).sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).perform();
         bekle(2);
+        actions.sendKeys(Keys.HOME).build().perform();
+        //build() method'u ile birden fazla oluşturduğumuz action objesini birbirimizw bağlayabiliriz.
     }
 }
