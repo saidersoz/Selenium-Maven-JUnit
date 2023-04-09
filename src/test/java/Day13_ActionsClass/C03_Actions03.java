@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
+import java.security.Key;
+
 public class C03_Actions03 extends TestBase {
 
     /*
@@ -28,6 +30,24 @@ public class C03_Actions03 extends TestBase {
         bekle(2);
 
         //Sayfanın üst tarafına gidin
+        actions.sendKeys(Keys.PAGE_UP).sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).perform();
+        bekle(2);
 
+    }
+
+    @Test
+    public void actions2() {
+        //https://techproeducation.com adresine gidin
+        driver.get("https://techproeducation.com");
+        driver.findElement(By.xpath("//i[@class='eicon-close']")).click(); bekle(2);
+
+        //Sayfanın alt tarafına gidin
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.END).perform();
+        bekle(2);
+
+        //Sayfanın üst tarafına gidin
+        actions.sendKeys(Keys.PAGE_UP).sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).perform();
+        bekle(2);
     }
 }
