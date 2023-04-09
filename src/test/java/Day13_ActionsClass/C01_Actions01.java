@@ -30,9 +30,10 @@ public class C01_Actions01 extends TestBase {
         //    Alert’te cikan yazinin “You selected a context menu” oldugunu test edin
         String alertText = driver.switchTo().alert().getText();
         Assert.assertTrue(alertText.contains("You selected a context menu"));
-
+        bekle(2);
 
         //    Tamam diyerek alert’i kapatın
-        alertAccept(); bekle(2);
+        alertAccept();
+        bekle(2);
     }
 }
