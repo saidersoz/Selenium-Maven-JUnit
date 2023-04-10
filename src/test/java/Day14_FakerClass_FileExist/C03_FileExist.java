@@ -23,6 +23,6 @@ public class C03_FileExist {
         String ortakKisim  = "\\OneDrive\\Masaüstü\\Batch129.txt";//Aynı yerde oluşturulduğu için ortakKısım dedik
         String dosyaYolu = farkliKisim+ortakKisim;//Dosya yolu olarak farkliKisim ve ortakkisimi aldık
 
-        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
+        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu))); //Files.exists methodu ile dosyanın varlığını doğruladık
     }
 }
