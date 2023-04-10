@@ -19,9 +19,9 @@ public class C03_FileExist {
         //Localimizde ki kullanıcı yolunu verir
 
         //String dosyaYolu = "\"C:\\Users\\ASUS\\OneDrive\\Masaüstü\\Batch129.txt\"";
-        String farkliKisim = System.getProperty("user.home");
-        String ortakKisim  = "\\OneDrive\\Masaüstü\\Batch129.txt";
-        String dosyaYolu = farkliKisim+ortakKisim;
+        String farkliKisim = System.getProperty("user.home");//Her kullanıcının ana yolu farklı olduğuğu için farklı kısım dedik
+        String ortakKisim  = "\\OneDrive\\Masaüstü\\Batch129.txt";//Aynı yerde oluşturulduğu için ortakKısım dedik
+        String dosyaYolu = farkliKisim+ortakKisim;//Dosya yolu olarak farkliKisim ve ortakkisimi aldık
 
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
     }
