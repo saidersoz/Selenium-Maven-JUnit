@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.sql.rowset.serial.SerialStruct;
 import java.time.Duration;
@@ -99,4 +101,16 @@ public abstract class TestBase {
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
 
+    //Explicit Wait
+    public static void visibleWait(WebElement element,int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+    }
+    //Alert Wait
+    public static void alertWait(int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.alertIsPresent());
+
+    }
 }
