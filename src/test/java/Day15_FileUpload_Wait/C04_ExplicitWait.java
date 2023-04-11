@@ -33,5 +33,15 @@ public class C04_ExplicitWait extends TestBase {
         Assert.assertTrue(element.isDisplayed());
     }
 
-
+    @Test
+    public void tekrar02() {
+        //https://the-internet.herokuapp.com/dynamic_controls sayfasına gidin
+        driver.get("https://the-internet.herokuapp.com/dynamic_controls");
+        //    Remove tuşuna basın
+        driver.findElement(By.xpath("(//button)[1]")).click();
+        //    "It's gone!" yazısını doğrulayı
+        WebElement element = driver.findElement(By.xpath("//p[@id='message']")); //"It's gone!" yazısının elementi
+        visibleWait(element,20);
+        Assert.assertTrue(element.isDisplayed());
+    }
 }
