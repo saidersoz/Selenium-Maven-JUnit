@@ -1,8 +1,10 @@
 package Day16_SeleniumException;
 
 import Utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class C02_TimeOutExceptions extends TestBase {
 
@@ -36,6 +38,11 @@ public class C02_TimeOutExceptions extends TestBase {
 
         //start butonuna tıklayalım
         driver.findElement(By.xpath("//button")).click();
-
+        //Hello World text'nin çıktığını doğrulayınız
+        WebElement heloWorldText = driver.findElement(By.xpath("(//h4)[2]"));
+        visibleWait(heloWorldText,2);
+        //HelloWorld yazısı ortalama 6 saniyede gözüktüğü için explicit waitte max 2 saniye verdiğimizden dolayı
+        //org.openqa.selenium.TimeoutException hatası aldık
+        Assert.assertTrue(heloWorldText.isDisplayed());
     }
 }
