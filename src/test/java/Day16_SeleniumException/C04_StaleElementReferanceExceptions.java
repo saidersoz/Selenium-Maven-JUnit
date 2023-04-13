@@ -50,4 +50,23 @@ public class C04_StaleElementReferanceExceptions extends TestBase {
         // hatasını aldık çünkü locate ettikten sonra refresh yaptığımız iiçn element eksilmiş oldu .dolayısıyla bu exception'ı handle
         //edebilmek için click yapmadan önce tekrar aynı locate'i webelement'e atamamız gerekir.
     }
+
+    @Test
+    public void StaleElementReferanceExceptionsTest3() {
+        //TechProEducation sayfasına gidelim
+        driver.get("https://techproeducation.com/");
+        bekle(3);
+        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();//Reklamı kapatıyorum
+
+        //login butonuna tıklayalım
+        WebElement lmsLogin = driver.findElement(By.xpath("(//a[@class='elementor-item'])[4]"));
+        lmsLogin.click();
+
+        //sayfaya gittikten sonra sayfayı refresh yapalım
+        driver.navigate().refresh(); bekle(2);
+
+        //login'e tıkla
+        lmsLogin = driver.findElement(By.xpath("(//a[@class='elementor-item'])[4]"));
+        lmsLogin.click();
+    }
 }
