@@ -3,6 +3,7 @@ package Utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -101,16 +102,24 @@ public abstract class TestBase {
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
 
-    //Explicit Wait
+
+    //EXPLICIT WAIT METHODS
+
+    //Visible Wait
     public static void visibleWait(WebElement element,int sayi){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOf(element));
-
     }
     //Alert Wait
     public static void alertWait(int sayi){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    //VisibleElementlocator Wait
+    public static void visibleWait(By locator, int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
     }
 }
