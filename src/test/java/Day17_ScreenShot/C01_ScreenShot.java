@@ -24,7 +24,7 @@ public class C01_ScreenShot extends TestBase {
         driver.findElement(By.xpath("//i[@class='eicon-close']")).click();//Reklamı kapatıyorum
 
         //1.adım : ilk olarak dosyayı nereye kaydedeceğimizi belirtiriz
-        String dosyaYolu = "screenShot.png";
+        String dosyaYolu = "target/screenShot/screenShot.png";
 
         //2.adım : ikinci olarak "TakesScreenshot" arayüzünden obje oluşturmak
         TakesScreenshot ts = (TakesScreenshot) driver;
@@ -37,7 +37,6 @@ public class C01_ScreenShot extends TestBase {
          */
         //ekran resmini projemize kaydedelim.
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
-
 
     }
 }
