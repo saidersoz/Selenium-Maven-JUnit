@@ -1,19 +1,22 @@
 package Utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.sql.rowset.serial.SerialStruct;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class TestBase {
@@ -92,13 +95,13 @@ public abstract class TestBase {
     }
 
     //switchToWindow 1
-    public static void switchToWindow(int sayi){
+    public static void switchToWindow(int sayi) {
         List<String> tumWindowHandles = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tumWindowHandles.get(sayi));
     }
 
     //switchToWindow 2
-    public static void window(int sayi){
+    public static void window(int sayi) {
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
 
@@ -106,21 +109,34 @@ public abstract class TestBase {
     //EXPLICIT WAIT METHODS
 
     //Visible Wait
-    public static void visibleWait(WebElement element,int sayi){
+    public static void visibleWait(WebElement element, int sayi) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
     //Alert Wait
-    public static void alertWait(int sayi){
+    public static void alertWait(int sayi) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.alertIsPresent());
     }
 
     //VisibleElementlocator Wait
-    public static void visibleWait(By locator, int sayi){
+    public static void visibleWait(By locator, int sayi) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
+    }
+
+    //Tüm Sayfa ScreenShot
+    public static void tumSayfaResmi() {
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "TestOutput/screenshot" + tarih + ".png";
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        try {
+            FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
