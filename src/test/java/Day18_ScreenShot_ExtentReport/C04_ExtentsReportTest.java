@@ -1,10 +1,15 @@
 package Day18_ScreenShot_ExtentReport;
 
 import Utilities.TestBase;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.junit.Test;
 
-public class C04_ExtentsReport extends TestBase {
-
+public class C04_ExtentsReportTest extends TestBase {
+    ExtentReports extentReports; //Raporlamayı Başlatır
+    ExtentHtmlReporter extentHtmlReporter; //Raporu HTML formatında düzelir
+    ExtentTest extentTest; //Tüm test aşamalarında extentTest objesi ile bilgi veririz
     @Test
     public void extentReportTest() {
         /*
@@ -14,5 +19,7 @@ public class C04_ExtentsReport extends TestBase {
             3-HTML formatında düzenleneceği için ExtentHtmlReporter class'ından obje oluşturulur.
             4-Rapora test ile ilgili bilgiler girebilmek için ExtentTest class'ından bir obje oluşturulur.
          */
+
+
     }
 }
