@@ -1,4 +1,4 @@
-package Day18_ScreenShot;
+package Day18_ScreenShot_ExtentReport;
 
 import Utilities.TestBase;
 import org.junit.Test;
