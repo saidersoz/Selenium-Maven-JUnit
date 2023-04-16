@@ -139,5 +139,16 @@ public abstract class TestBase {
         }
     }
 
+    //WebElement ScreenShot
+    public static void webelementResmi(WebElement element){
 
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "target/webElementScreenShot"+tarih+".png";
+        try {
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
