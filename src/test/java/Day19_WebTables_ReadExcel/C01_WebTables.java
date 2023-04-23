@@ -52,6 +52,12 @@ public class C01_WebTables extends TestBase {
 
         System.out.println();
 
+        
+    }
+
+    @Test
+    public void webTablesTest2() {
+
         //    Task 5 : Iki parametreli bir Java metodu oluşturalım: printData
 
 
@@ -63,6 +69,13 @@ public class C01_WebTables extends TestBase {
 
         //    printData(2,3);  => 2. satır, 3. sütundaki veriyi yazdırsın.
 
-
+        driver.get("https://the-internet.herokuapp.com/tables");
+        printData(2,3);
     }
+
+    public void printData(int satir, int sutun){
+        WebElement satirSutun = driver.findElement(By.xpath("(//tbody)[2]//tr["+satir+"]//td["+sutun+"]"));
+        System.out.println(satirSutun.getText());
+    }
+
 }
