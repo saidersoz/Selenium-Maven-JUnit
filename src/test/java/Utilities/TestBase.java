@@ -1,5 +1,7 @@
 package Utilities;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -140,15 +142,36 @@ public abstract class TestBase {
     }
 
     //WebElement ScreenShot
-    public static void webelementResmi(WebElement element){
+    public static void webelementResmi(WebElement element) {
 
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "target/webElementScreenShot"+tarih+".png";
+        String dosyaYolu = "target/webElementScreenShot" + tarih + ".png";
         try {
-            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+
+    //ExtentReport
+    public void extentReport(){
+        ExtentReports extentReports = new ExtentReports();
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "TestOutput/reports/extentReport_"+tarih+".html";
+        ExtentHtmlReporter extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
+        extentReports.attachReporter(extentHtmlReporter);
+
+        //Raporda gözükmesini istediğimiz bilgiler için
+        extentReports.setSystemInfo("Browser","Chrome");
+        extentReports.setSystemInfo("Tester","Erol");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
+    }
+    //WebTable
+    public void printData(int satir, int sutun){
+        WebElement satirSutun = driver.findElement(By.xpath("(//tbody)[1]//tr["+satir+"]//td["+sutun+"]"));
+        System.out.println(satirSutun.getText());
+    }
+
 }
