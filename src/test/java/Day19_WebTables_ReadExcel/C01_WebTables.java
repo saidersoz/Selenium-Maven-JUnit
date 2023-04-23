@@ -71,6 +71,10 @@ public class C01_WebTables extends TestBase {
 
         driver.get("https://the-internet.herokuapp.com/tables");
         printData(2,3);
+        printData(2,5);
+        printData(3,2);
+        printData(1,4);
+        //printData(1,7); --> 7.Sütun olmadığı için noSuchElementException Hatası alırız
     }
 
     public void printData(int satir, int sutun){
