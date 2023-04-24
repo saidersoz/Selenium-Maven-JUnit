@@ -183,4 +183,23 @@ public abstract class TestBase {
             js.executeScript("arguments[0].click();",element);
         }
     }
+
+    //JS Scroll
+    public void scroll(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    //JS Sayfa Sonu Scroll
+    public void scrollEnd(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+    //JS Sayfa Başı Scroll
+    public void scrollHome(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+    }
+
+
 }
