@@ -155,51 +155,57 @@ public abstract class TestBase {
     }
 
     //ExtentReport
-    public void extentReport(){
+    public void extentReport() {
         ExtentReports extentReports = new ExtentReports();
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "TestOutput/reports/extentReport_"+tarih+".html";
+        String dosyaYolu = "TestOutput/reports/extentReport_" + tarih + ".html";
         ExtentHtmlReporter extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
         extentReports.attachReporter(extentHtmlReporter);
 
         //Raporda gözükmesini istediğimiz bilgiler için
-        extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Tester","Erol");
+        extentReports.setSystemInfo("Browser", "Chrome");
+        extentReports.setSystemInfo("Tester", "Erol");
         extentHtmlReporter.config().setDocumentTitle("Extent Report");
         extentHtmlReporter.config().setReportName("Smoke Test Raporu");
     }
+
     //WebTable
-    public void printData(int satir, int sutun){
-        WebElement satirSutun = driver.findElement(By.xpath("(//tbody)[1]//tr["+satir+"]//td["+sutun+"]"));
+    public void printData(int satir, int sutun) {
+        WebElement satirSutun = driver.findElement(By.xpath("(//tbody)[1]//tr[" + satir + "]//td[" + sutun + "]"));
         System.out.println(satirSutun.getText());
     }
 
     //click method
-    public void click(WebElement element){
+    public void click(WebElement element) {
         try {
             element.click();
-        }catch (Exception e){
+        } catch (Exception e) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();",element);
+            js.executeScript("arguments[0].click();", element);
         }
     }
 
     //JS Scroll
-    public void scroll(WebElement element){
+    public void scroll(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     //JS Sayfa Sonu Scroll
-    public void scrollEnd(){
+    public void scrollEnd() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
     }
+
     //JS Sayfa Başı Scroll
-    public void scrollHome(){
+    public void scrollHome() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
     }
 
-
+    //JS send keys
+    public void SendKeysJS(WebElement element, String text) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='"+text+"'", element);
+    }
 }
