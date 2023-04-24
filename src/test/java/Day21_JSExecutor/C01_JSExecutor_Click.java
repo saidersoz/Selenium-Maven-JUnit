@@ -2,6 +2,7 @@ package Day21_JSExecutor;
 
 import Utilities.TestBase;
 import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -36,26 +37,33 @@ public class C01_JSExecutor_Click extends TestBase {
         Faker faker = new Faker();
         WebElement firstName = driver.findElement(By.id("firstname"));
         firstName.sendKeys(faker.name().firstName() + Keys.TAB, faker.name().lastName(), Keys.TAB, Keys.TAB,
-                Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, faker.phoneNumber().cellPhone());
+                Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB,"said");
 
         bekle(1);
 
 
         //    Submit tuşuna tıkla
         WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
+        /*
         try {
             submit.click();
         }catch (Exception e){
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();",submit);
         }
-
+        */
         //org.openqa.selenium.ElementClickInterceptedException: Eğer JS kodlarıyla bir web element oluşturulmuşsa
         //normal click() methodunda bu exception'ı alırız
 
+        click(submit);
 
         bekle(1);
+
         //    Sayfa adresinin "http://www.uitestpractice.com/Students/Form?optradio=on" olduğunu doğrula.
 
+        String actualUrl = driver.getCurrentUrl();
+        String expecterUrl = "http://www.uitestpractice.com/Students/Form?optradio=on";
+
+        Assert.assertNotEquals(expecterUrl,actualUrl);
     }
 }
