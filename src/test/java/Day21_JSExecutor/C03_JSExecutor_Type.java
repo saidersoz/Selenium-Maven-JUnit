@@ -20,13 +20,20 @@ public class C03_JSExecutor_Type extends TestBase {
         driver.findElement(By.xpath("//*[@class='eicon-close']")).click();
 
         //Arama kutusuna QA yaz
-        WebElement aramaKutusu = driver.findElement(By.xpath("//input[@title='Search']"));
+        WebElement aramaKutusu = driver.findElement(By.xpath("//*[@title='Search']"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         /*
-        Bazı giriş kutuları normal sendKeys() methodu ile metin gönderilmesine izin vermez.
-        Bu gibi durumlarda aşağıdaki örnekte gibi JSExecutor kullanılır.
-        */
-       // js.executeScript("arguments[0].value='QA'",aramaKutusu);
-        SendKeysJS(aramaKutusu,"QA");
+            Bazi giriş kutuları normal sendKeys() methodu ile metin gönderilmesine izim vermez.
+        Bu gibi durumlarda aşağıdaki örnekteki gibi JSExecutor kullanılır
+         */
+        //js.executeScript("arguments[0].value='QA'",aramaKutusu);
+        //sendKeysJS(aramaKutusu,"QA");
+        /*
+        Eğer js.executeScript("arguments[0].value='QA'",aramaKutusu); bu kullanımdaki gibi metin gönderemezsek
+        aşağıdaki örnekteki gibi value attribute'ne değer atayabiliriz
+         */
+        //js.executeScript("arguments[0].setAttribute('value','QA')",aramaKutusu);
+
+        sendAttributeJS(aramaKutusu,"QA");
     }
 }

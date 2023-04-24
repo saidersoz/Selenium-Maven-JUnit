@@ -208,4 +208,9 @@ public abstract class TestBase {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].value='"+text+"'", element);
     }
+
+    public void sendAttributeJS(WebElement element, String text) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('Value','"+text+"')",element);
+    }
 }
